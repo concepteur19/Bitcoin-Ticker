@@ -1,0 +1,118 @@
+.selection{ 
+    background-color: #0563af;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.formulaire{
+    align-items: center;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    
+}
+
+body{
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #96b1fc;
+    width: 50%;
+    height: 50%;
+}
+
+
+.in{
+    background-color: rgb(26, 150, 26);
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    border-radius: 4px;
+    color: aliceblue;
+}
+
+.q{
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+h1{
+    text-align: center;
+    color: rgb(198, 250, 232);
+}
+
+div{
+    width: 400px;
+    height: 470px;
+    background-color: #0563af;
+    display: block;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.div{
+    width: 300px;
+    height: 280px;
+    background-color: #0563af;
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+p{
+    color: #0563af;
+    position: absolute;
+    top: 105%;
+    left: 35%;
+}
+
+.basPage{
+    color: #0563af;
+    position: absolute;
+    top: 105%;
+    left: 30%;
+}
+
+img{
+    position: absolute;
+    top: -30%;
+    left: 35%;
+}
