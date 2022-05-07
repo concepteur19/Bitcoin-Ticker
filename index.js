@@ -19,11 +19,12 @@ app.get("/", function(req, res) {
 app.post("/", function(req, res){
 
     var data_c = req.body.crypto;
-    var data_f = String(req.body.fiat);
-    var amount = Number(req.body.amount);
+    var data_f = req.body.fiat;
+    var amount = req.body.amount;
 
-    if (data_f === "XAF") {
-        var data_fi = "USD";
+    if (data_f=="XAF") {
+        var data_fi = "XAF"
+        data_f = "USD";
         var option = {
             url: "https://pro-api.coinmarketcap.com/v2/tools/price-conversion",
             methode: "GET",
@@ -33,7 +34,7 @@ app.post("/", function(req, res){
             qs : {
                 amount: amount,
                 symbol: data_c,
-                convert: data_fi,
+                convert: data_f
             }
         }
 
@@ -45,8 +46,9 @@ app.post("/", function(req, res){
             var quoteObject = donees.data[0].quote;
             var quoteTable = Object.values(quoteObject);
             var fiatTable = quoteTable[0];
-            var price = fiatTable.price * 620.5;
-            //var lastUpdate = fiatTable.last_updated;
+            var price = fiatTable.price;
+            var rprice = price * 620.5;
+            var lastUpdate = fiatTable.last_updated;
             /*res.write("<p>The current date is " + date + "</p>");
 
             res.write("<h1>" + amount +" "+ data_c + " is currently worth " + price + " FCFA.</h1>");
@@ -54,27 +56,27 @@ app.post("/", function(req, res){
             res.write("Last update currency : " +lastUpdate);*/
             //document.querySelector("span").textContent = String(price);
             res.send('<head>\
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-            <title>Bitcoin Ticker</title>\
-            <!-- CSS only -->\
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">\
-            <link rel="stylesheet" href="css/style.css">\
-            </head>\
-            <body> \
-            <div class = "div">\
-                <form class = "formulaire" action="/result" method="post">\
-                 <h1>Results</h1> <br>\
-                 <span class="q">'+ price + ' FCFA</span> <br>\
-                 <button class = "in" type="submit" name="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">\
-                     <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>\
-                   </svg> Home</button>\
-             </form>\
-            </div>\
-             <script src="pric.js"></script>\
-         </body>');
-
-            
-        });
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+        <title>Bitcoin Ticker</title>\
+        <!-- CSS only -->\
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">\
+        <link rel="stylesheet" href="css/style.css">\
+        </head>\
+        <body> \
+        <div class = "div">\
+        <h6>last update '+ lastUpdate + ' </h6>\
+            <form class = "formulaire" action="/result" method="post">\
+             <h1>Results</h1> <br>\
+             <span class="q">'+ rprice + " " + data_fi + '</span> <br>\
+             <button class = "in" type="submit" name="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">\
+                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>\
+               </svg> Home</button>\
+         </form>\
+         <p class="basPage">&copy; Concepteur JS</p>\
+        </div>\
+         <script src="pric.js"></script>\
+     </body>');
+    });
     }
 
     // option est un objet
@@ -133,6 +135,7 @@ app.post("/", function(req, res){
         </head>\
         <body> \
         <div class = "div">\
+        <h6>last update '+ lastUpdate + ' </h6>\
             <form class = "formulaire" action="/result" method="post">\
              <h1>Results</h1> <br>\
              <span class="q">'+ price + " " + data_f + '</span> <br>\
