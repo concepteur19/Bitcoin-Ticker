@@ -158,6 +158,6 @@ app.post('/result', function(req, res) {
 
 // localhost:3000 = "/"
 app.listen(process.env.PORT
-||3000, function() {
-    console.log("server is being running on port 3000.")
+||4000, function() {
+    console.log("server is being running on port 4000.")
 });
